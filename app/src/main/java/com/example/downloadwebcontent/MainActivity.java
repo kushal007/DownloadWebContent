@@ -19,27 +19,25 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     ImageView down_image;
+    public void forData()
+    {
+        DownloadTask task = new DownloadTask();
+        String result = "";
+        try {
+            result = task.execute("https://google.com").get();
+            Log.i("Output", result);
+        }
+        catch (Exception e)
+        {
+            Log.i("Problem", "Exception occurred while async");
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         down_image = (ImageView)findViewById(R.id.imageView);
-
-
-
-
-        //DownloadTask task = new DownloadTask();
-        //String result = "";
-//        try {
-//            result = task.execute("https://google.com").get();
-//            Log.i("Output", result);
-//        }
-//        catch (Exception e)
-//        {
-//            Log.i("Problem", "Exception occurred while async");
-//        }
-
-
         setContentView(R.layout.activity_main);
     }
 
